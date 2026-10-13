@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papan Tugas Tim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-900 font-sans">
+  <div class="max-w-[1700px] mx-auto px-4 sm:px-8 xl:px-[110px] py-10 lg:py-[50px] grid gap-6 lg:grid-cols-[360px_1fr] items-start">
+
+    <aside class="bg-white border border-gray-200 rounded-2xl p-[30px] pb-6 lg:min-h-[900px]">
+      <h1 class="text-xl font-bold">Tim Aldo</h1>
+      <p class="text-sm text-gray-500 mt-5 mb-2">Anggota</p>
+
+      <p id="loading-anggota" class="text-gray-500 px-3 py-2 hidden"></p>
+      <p id="error-anggota" class="text-red-600 bg-red-50 border border-red-200 rounded-lg p-3 text-sm hidden"></p>
+      <div id="daftar-anggota" class="flex flex-col gap-1 -mx-[12px]"></div>
+    </aside>
+
+    <main class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+      <header class="px-[30px] pt-[30px] pb-6 border-b border-gray-200 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 id="judul-tugas" class="text-3xl font-bold">Tugas</h2>
+          <p id="ringkasan" class="text-lg text-gray-500 mt-2"></p>
+        </div>
+        <div id="progres-wrap" class="w-72 h-2 rounded-full bg-gray-200 overflow-hidden mb-1 hidden">
+          <div id="bar-progres" class="h-full bg-green-600 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </header>
+
+      <div class="px-[30px] py-6">
+        <p id="petunjuk-tugas" class="text-gray-500">Pilih anggota di sebelah kiri untuk melihat tugasnya.</p>
+        <p id="loading-tugas" class="text-gray-500 hidden"></p>
+        <p id="error-tugas" class="text-red-600 bg-red-50 border border-red-200 rounded-lg p-3 hidden"></p>
+      </div>
+
+      <div id="konten-tugas" class="hidden -mt-6">
+        <div class="px-[30px] pt-6 flex flex-col md:flex-row gap-3">
+          <input
+            id="cari"
+            type="text"
+            placeholder="Cari judul tugas"
+            class="md:w-[385px] bg-gray-100 border border-gray-200 rounded-xl px-[18px] py-[15px] text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+          />
+          <form id="form-tugas" class="flex flex-1 gap-3" novalidate>
+            <input
+              id="input-judul"
+              type="text"
+              placeholder="Tambah tugas baru (min. 5 karakter)"
+              class="flex-1 min-w-0 border border-gray-200 rounded-xl px-[18px] py-[15px] text-lg placeholder-gray-500 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+            />
+            <button
+              id="tombol-simpan"
+              type="submit"
+              class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold px-6 rounded-xl disabled:opacity-60 disabled:cursor-not-allowed"
+            >Simpan</button>
+          </form>
+        </div>
+
+        <p id="error-form" class="px-[30px] min-h-[4.5rem] pt-3 text-red-600"></p>
+
+        <p id="pesan-kosong" class="px-[30px] py-6 text-gray-500 italic border-t border-gray-200 hidden"></p>
+        <ul id="daftar-tugas" class="border-t border-gray-200 divide-y divide-gray-200"></ul>
+      </div>
+    </main>
+  </div>
+
+  <div
+    id="notifikasi"
+    class="hidden fixed bottom-6 right-6 bg-green-600 text-white px-5 py-3 rounded-xl shadow-lg"
+  ></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
